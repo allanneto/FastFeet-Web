@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as S from './styles';
 
-import Button from '~/components/Button';
+import Button from '~/components/RegisterButton';
 import Menu from '~/components/Menu';
 
 export default function Couriers() {

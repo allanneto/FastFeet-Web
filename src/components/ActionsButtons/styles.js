@@ -16,7 +16,7 @@ export const Box = styled.div`
 `;
 
 export const SaveButton = styled.button.attrs({
-  type: 'button',
+  type: 'submit',
 })`
   display: flex;
   align-items: center;

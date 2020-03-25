@@ -1,11 +1,15 @@
 import React from 'react';
-
+import history from '~/services/history';
 import * as S from './styles';
 
 export default function SaveButton() {
+  const handleReturn = () => {
+    history.goBack();
+  };
+
   return (
     <S.Container>
-      <S.ReturnButton>
+      <S.ReturnButton onClick={handleReturn}>
         <S.Box>
           <S.Return />
           VOLTAR

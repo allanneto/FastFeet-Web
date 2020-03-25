@@ -35,7 +35,12 @@ export function setToken({ payload }) {
   }
 }
 
+export function signOut() {
+  history.push('/');
+}
+
 export default all([
-  takeLatest('@auth/LOGIN_REQUEST', login),
   takeLatest('persist/REHYDRATE', setToken),
+  takeLatest('@auth/LOGIN_REQUEST', login),
+  takeLatest('@auth/SIGN_OUT', signOut),
 ]);

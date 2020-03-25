@@ -5,7 +5,7 @@ import Route from './Routes';
 import Login from '../pages/Login';
 import Couriers from '../pages/Couriers';
 import Deliveries from '../pages/Deliveries';
-import CreateDelivery from '../pages/CreateDelivery';
+import CreateDelivery from '../pages/Deliveries/CreateDelivery';
 
 import Problems from '../pages/Problems';
 import Recipients from '../pages/Recipients';

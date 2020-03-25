@@ -10,7 +10,7 @@ export const Icon = styled(MdAddCircleOutline)`
 `;
 
 export const AddButton = styled.button.attrs({
-  type: 'submit',
+  type: 'button',
 })`
   display: flex;
   align-items: center;

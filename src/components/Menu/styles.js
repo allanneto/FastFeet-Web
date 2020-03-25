@@ -3,8 +3,17 @@ import { lighten, darken } from 'polished';
 import { MdRemoveRedEye, MdDeleteForever, MdMoreHoriz } from 'react-icons/md';
 import { GoPencil } from 'react-icons/go';
 
-export const Button = styled.button.attrs()`
+export const Wrapper = styled.div`
+  height: 100%;
+  display: flex;
+  padding: 15px;
+  justify-content: flex-end;
+`;
+
+export const Button = styled.div`
+  align-self: flex-end;
   position: relative;
+
   margin: 0;
   border: 0;
 `;
@@ -16,10 +25,10 @@ export const Container = styled.div.attrs(props => ({
   position: absolute;
   align-items: center;
   padding: 15px;
-  left: -62px;
-  top: 40px;
+  right: -48px;
+  top: 50px;
 
-  z-index: 10;
+  z-index: 3;
   background: ${lighten(0.2, '#ccc')};
   width: 150px;
   height: 120px;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { lighten } from 'polished';
 import { MdAddCircleOutline, MdMoreHoriz } from 'react-icons/md';
+import { darken } from 'polished';
 
 export const Title = styled.h2`
   margin: 34px 0 34px 120px;
@@ -37,28 +37,6 @@ export const Input = styled.input.attrs({
   }
 `;
 
-export const AddButton = styled.button.attrs({
-  type: 'submit',
-})`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 142px;
-  height: 36px;
-  border: 0;
-  background: #320d6d;
-  border-radius: 5px;
-
-  font-size: 14px;
-  color: #fff;
-  font-weight: bold;
-
-  &:hover {
-    background: ${lighten(0.1, '#320d6d')};
-  }
-`;
-
 export const Table = styled.table`
   width: 100%;
   margin-top: 20px;
@@ -88,6 +66,7 @@ export const Head = styled.th.attrs({
 })`
   font-size: 16px;
   text-align: left;
+  padding-left: 10px;
 
   :last-child {
     text-align: right;
@@ -95,10 +74,13 @@ export const Head = styled.th.attrs({
 `;
 
 export const Item = styled.td.attrs({})`
+  position: relative;
   text-align: left;
 
   color: #666666;
   font-size: 16px;
+  padding-left: 10px;
+
   :last-child {
     text-align: right;
   }
@@ -111,7 +93,10 @@ export const Icon = styled(MdAddCircleOutline)`
   height: 18px;
 `;
 
-export const Status1 = styled.span`
+// Finalizado - Entregue
+export const Status1 = styled.span.attrs(props => ({
+  status: props.status,
+}))`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -134,6 +119,7 @@ export const Status1 = styled.span`
   }
 `;
 
+// Pendente - para retirar
 export const Status2 = styled.span`
   display: flex;
   align-items: center;
@@ -157,6 +143,7 @@ export const Status2 = styled.span`
   }
 `;
 
+// Em transito - Ja retirado
 export const Status3 = styled.span`
   display: flex;
   align-items: center;
@@ -180,6 +167,7 @@ export const Status3 = styled.span`
   }
 `;
 
+// Cancelado
 export const Status4 = styled.span`
   display: flex;
   align-items: center;
@@ -213,5 +201,70 @@ export const Actions = styled(MdMoreHoriz)`
 
   &:hover {
     cursor: pointer;
+  }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+`;
+
+export const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+`;
+
+export const HBox = styled.div`
+  display: flex;
+  align-items: center;
+  strong {
+    font-size: 16px;
+  }
+`;
+
+export const Strong = styled.strong`
+  margin: 3px 0px 3px 0;
+  font-size: 16px;
+  color: #444444;
+`;
+
+export const Span = styled.span`
+  font-size: 16px;
+  color: #666666;
+`;
+
+export const Signature = styled.img`
+  max-height: 200px;
+`;
+
+export const DeleteBox = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const DeleteButton = styled.button.attrs({
+  type: 'button',
+})`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100px;
+  height: 30px;
+
+  margin-top: 5px;
+  border: 0;
+  background: #de3b3b;
+  border-radius: 4px;
+
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+
+  &:hover {
+    background: ${darken(0.1, '#de3b3b')};
   }
 `;

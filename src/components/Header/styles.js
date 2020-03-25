@@ -31,9 +31,13 @@ export const NavBar = styled.ul`
   left: 200px;
 `;
 
-export const Item = styled.li`
+export const Item = styled.li.attrs(props => ({
+  value: props.value,
+  select: props.selected,
+}))`
   font-size: 15px;
-  color: #999999;
+  color: ${props =>
+    props.value === props.select ? darken(0.5, '#999999') : '#999999'};
   font-weight: bold;
   margin: 0 15px;
   line-height: 20px;
@@ -64,4 +68,14 @@ export const User = styled.div`
       cursor: pointer;
     }
   }
+`;
+
+export const SignOutButton = styled.button.attrs({
+  type: 'button',
+})`
+  margin-top: 5px;
+  font-size: 14px;
+  background: #fff;
+  color: #de3b3b;
+  border: 0;
 `;

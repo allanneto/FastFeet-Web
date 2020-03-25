@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import Select from 'react-select';
+import { Form } from '@unform/core';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { darken } from 'polished';
 
@@ -31,29 +33,18 @@ export const Box = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Form = styled.form`
+export const Formulary = styled(Form)`
   position: relative;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 `;
 
-export const Label = styled.label`
+export const Wrapper = styled.div`
   position: relative;
   display: flex;
-  flex-direction: column;
-  font-size: 14px;
-  font-weight: bold;
-
-  margin: 15px 0px 0px 30px;
-
-  color: #444444;
-
-  :last-child {
-    input {
-      width: 1330px;
-    }
-  }
+  align-items: center;
+  flex-wrap: wrap;
 `;
 
 export const Div = styled.div`
@@ -61,23 +52,6 @@ export const Div = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
-`;
-
-export const Input = styled.input`
-  width: 650px;
-  height: 45px;
-  margin-top: 10px;
-
-  border-radius: 4px;
-  background: #ffffff;
-  border: 0;
-  border: 1px solid #dddddd;
-
-  ::placeholder {
-    color: #999999;
-    font-size: 16px;
-    padding-left: 15px;
-  }
 `;
 
 export const Icon = styled(MdKeyboardArrowDown)`
@@ -90,7 +64,7 @@ export const Icon = styled(MdKeyboardArrowDown)`
   position: absolute;
 `;
 
-export const RecipientList = styled.div.attrs(props => ({
+export const RecipientList = styled.ul.attrs(props => ({
   visible: props.visible,
 }))`
   display: ${props => (props.visible ? 'block' : 'none')};
@@ -116,7 +90,7 @@ export const CourierList = styled.div.attrs(props => ({
   z-index: 5;
 `;
 
-export const Option = styled.div`
+export const Option = styled.ul`
   display: flex;
   align-self: flex-start;
   align-items: center;
@@ -128,10 +102,10 @@ export const Option = styled.div`
   }
 `;
 
-export const Itens = styled.input`
+export const Itens = styled.option`
   padding-left: 5px;
   font-size: 16px;
-  color: #999999;
+  color: #000000;
   border: 0;
   width: 100%;
 
