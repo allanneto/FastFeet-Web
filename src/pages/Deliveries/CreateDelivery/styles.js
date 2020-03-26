@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import Select from 'react-select';
 import { Form } from '@unform/core';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { darken } from 'polished';

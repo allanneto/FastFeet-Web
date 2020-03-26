@@ -6,6 +6,7 @@ import * as S from './styles';
 import Modal from '~/components/Modal';
 import Menu from '~/components/Menu';
 import RegisterButton from '~/components/RegisterButton';
+import Update from './Update';
 
 import FormatCep from '~/util/cepMask';
 import FormatDate from '~/util/formatDate';
@@ -148,7 +149,9 @@ export default function Deliveries() {
       );
     }
     if (option === 'update') {
-      return <S.Strong>Fenexz BURRO</S.Strong>;
+      return (
+        <Update content={content} setOpen={setOpen} reload={loadDeliveries} />
+      );
     }
 
     if (option === 'delete') {
