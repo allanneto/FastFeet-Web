@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 
 import api from '~/services/api';
+import UpdateButton from '~/components/UpdateButton';
 
 import * as S from './styles';
 
@@ -12,9 +13,8 @@ export default function Update({ content, setOpen, reload }) {
     recipient_id: Yup.string().required(
       'É obrigatório informar o destinatário.'
     ),
-    product: Yup.string().required('É obrigatório informar o entregador.'),
     courier_id: Yup.string().required(
-      'É obrigatório informar o nome do produto.'
+      'É obrigatório informar o nome do entregador.'
     ),
   });
 
@@ -68,12 +68,13 @@ export default function Update({ content, setOpen, reload }) {
     });
 
     setOpen(current => !current);
+    toast.success('Entrega atualizada.');
     reload();
   };
 
   return (
     <S.Container>
-      <Form schema={schema} onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <S.Select
           defaultValue={{
             label: content.recipient.recipient_name,
@@ -92,7 +93,7 @@ export default function Update({ content, setOpen, reload }) {
           label="Entregador"
           options={couriers}
         />
-        <S.ConfirmButton>ALTERAR</S.ConfirmButton>
+        <UpdateButton text="ALTERAR" />
       </Form>
     </S.Container>
   );

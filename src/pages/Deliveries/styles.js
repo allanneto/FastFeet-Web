@@ -249,19 +249,27 @@ export const DeleteButton = styled.button.attrs({
   type: 'button',
 })`
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   width: 100px;
+
   height: 30px;
 
   margin-top: 5px;
+
   border: 0;
+
   background: #de3b3b;
+
   border-radius: 4px;
 
   color: #fff;
+
   font-size: 16px;
+
   font-weight: bold;
 
   &:hover {

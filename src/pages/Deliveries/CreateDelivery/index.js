@@ -20,13 +20,15 @@ export default function Create() {
       const response = await api.get('recipients');
 
       const { data } = response;
-
-      setRecipients(
-        data.map(recip => ({
-          value: recip.id,
-          label: recip.recipient_name,
-        }))
-      );
+      if (!data.message) {
+        return setRecipients(
+          data.map(recip => ({
+            value: recip.id,
+            label: recip.recipient_name,
+          }))
+        );
+      }
+      return setRecipients(data);
     }
 
     async function loadCouriers() {
@@ -34,12 +36,15 @@ export default function Create() {
 
       const { data } = response;
 
-      setCouriers(
-        data.map(cour => ({
-          value: cour.id,
-          label: cour.name,
-        }))
-      );
+      if (!data.message) {
+        return setCouriers(
+          data.map(cour => ({
+            value: cour.id,
+            label: cour.name,
+          }))
+        );
+      }
+      return setCouriers(data);
     }
 
     loadRecipients();

@@ -4,6 +4,7 @@ import { darken } from 'polished';
 import Logo1 from '~/assets/logo2.png';
 
 export const Container = styled.div`
+  position: relative;
   background: #fff;
   height: 64px;
   width: 100%;

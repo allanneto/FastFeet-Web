@@ -12,7 +12,7 @@ export default function Header() {
   const handleNavigate = route => {
     setSelected(route);
 
-    history.push(route);
+    history.push(`/${route}`);
   };
 
   function handleSignOut() {

@@ -37,7 +37,7 @@ export default function Login() {
             <Input
               name="password"
               type="password"
-              placeholder="*************"
+              placeholder="Insira a senha"
             />
 
             <SubmitButton>

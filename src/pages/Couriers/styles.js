@@ -1,12 +1,6 @@
 import styled from 'styled-components';
-// import { lighten } from 'polished';
-import {
-  MdAddCircleOutline,
-  // MdMoreHoriz,
-  // MdRemoveRedEye,
-  // MdDeleteForever,
-} from 'react-icons/md';
-// import { GoPencil } from 'react-icons/go';
+import { darken } from 'polished';
+import { MdAddCircleOutline } from 'react-icons/md';
 
 export const Title = styled.h2`
   margin: 34px 0 34px 120px;
@@ -81,6 +75,7 @@ export const Head = styled.th.attrs({
 `;
 
 export const Item = styled.td.attrs({})`
+  position: relative;
   color: #666666;
   font-size: 16px;
   width: 150px;
@@ -101,4 +96,78 @@ export const Icon = styled(MdAddCircleOutline)`
 
   width: 18px;
   height: 18px;
+`;
+
+export const MiniAvatar = styled.img`
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+`;
+
+export const Content = styled.div`
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+`;
+
+export const Box = styled.div`
+  display: flex;
+  margin-left: 10px;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+`;
+
+export const HBox = styled.div`
+  display: flex;
+  align-items: center;
+  strong {
+    font-size: 16px;
+  }
+`;
+
+export const Strong = styled.strong`
+  margin: 3px 0px 3px 0;
+  font-size: 16px;
+  color: #444444;
+`;
+
+export const Span = styled.span`
+  font-size: 16px;
+  color: #666666;
+`;
+
+export const DeleteBox = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const DeleteButton = styled.button.attrs({
+  type: 'button',
+})`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100px;
+  height: 30px;
+
+  margin-top: 5px;
+  border: 0;
+  background: #de3b3b;
+  border-radius: 4px;
+
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+
+  &:hover {
+    background: ${darken(0.1, '#de3b3b')};
+  }
+`;
+
+export const Avatar = styled.img`
+  max-width: 100px;
+  max-height: 100px;
 `;

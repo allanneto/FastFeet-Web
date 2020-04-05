@@ -21,7 +21,6 @@ export default function Deliveries() {
 
   const loadDeliveries = async () => {
     const response = await api.get('delivery');
-
     const defineStatus = (start_date, end_date, canceled_at) => {
       if (canceled_at !== null) {
         return 'CANCELADO';
@@ -37,16 +36,22 @@ export default function Deliveries() {
       return 'PENDENTE';
     };
 
-    const data = response.data.map(delivery => ({
-      ...delivery,
-      status: defineStatus(
-        delivery.start_date,
-        delivery.end_date,
-        delivery.canceled_at
-      ),
-    }));
+    if (!response.data.message) {
+      console.tron.log('foi?');
 
-    setDeliveries(data);
+      const data = response.data.map(delivery => ({
+        ...delivery,
+        status: defineStatus(
+          delivery.start_date,
+          delivery.end_date,
+          delivery.canceled_at
+        ),
+      }));
+
+      return setDeliveries(data);
+    }
+
+    return setDeliveries(response.data);
   };
 
   useEffect(() => {
@@ -104,12 +109,14 @@ export default function Deliveries() {
     );
 
     if (confirmation) {
-      await api.delete(`problem/${content.id}/delete-delivery`);
+      await api.delete(`delete-delivery/${content.id}`);
 
       setOpen(current => !current);
       loadDeliveries();
       return toast.success('A entrega foi excluida');
     }
+
+    return setOpen(current => !current);
   };
 
   const modalOption = () => {
@@ -139,8 +146,9 @@ export default function Deliveries() {
             <S.Strong>Assinatura do destinatário</S.Strong>
             <S.Signature
               src={
-                content.signature.url ||
-                'https://upload.wikimedia.org/wikipedia/commons/e/ed/Item_sem_imagem.svg'
+                content.signature === null
+                  ? 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Item_sem_imagem.svg'
+                  : content.signature.url
               }
               alt="Assinatura"
             ></S.Signature>
@@ -187,19 +195,33 @@ export default function Deliveries() {
               <S.Head>Status</S.Head>
               <S.Head>Ações</S.Head>
             </S.HeadRow>
-            {deliveries.map(delivery => (
+            {deliveries.message ? (
               <S.Row>
-                <S.Item>{delivery.id}</S.Item>
-                <S.Item>{delivery.recipient.recipient_name}</S.Item>
-                <S.Item>{delivery.courier.name}</S.Item>
-                <S.Item>{delivery.recipient.city}</S.Item>
-                <S.Item>{delivery.recipient.state}</S.Item>
-                <S.Item>{verifyStatus(delivery.status)}</S.Item>
+                <S.Item></S.Item>
+                <S.Item></S.Item>
+                <S.Item></S.Item>
+                <S.Item></S.Item>
+                <S.Item></S.Item>
+                <S.Item></S.Item>
                 <S.Item>
-                  <Menu view setOpen={type => handleOpen(delivery, type)} />
+                  <Menu view />
                 </S.Item>
               </S.Row>
-            ))}
+            ) : (
+              deliveries.map(delivery => (
+                <S.Row>
+                  <S.Item>{delivery.id}</S.Item>
+                  <S.Item>{delivery.recipient.recipient_name}</S.Item>
+                  <S.Item>{delivery.courier.name}</S.Item>
+                  <S.Item>{delivery.recipient.city}</S.Item>
+                  <S.Item>{delivery.recipient.state}</S.Item>
+                  <S.Item>{verifyStatus(delivery.status)}</S.Item>
+                  <S.Item>
+                    <Menu view setOpen={type => handleOpen(delivery, type)} />
+                  </S.Item>
+                </S.Row>
+              ))
+            )}
           </tbody>
         </S.Table>
       </S.Container>
