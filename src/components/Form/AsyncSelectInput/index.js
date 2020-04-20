@@ -1,5 +1,7 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useField } from '@unform/core';
 
 import * as S from './styles';
@@ -38,3 +40,8 @@ export default function Select({ name, label, ...rest }) {
     </S.Label>
   );
 }
+
+Select.propTypes = {
+  name: PropTypes.string,
+  label: PropTypes.string,
+};

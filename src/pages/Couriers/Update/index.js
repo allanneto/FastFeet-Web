@@ -1,4 +1,6 @@
+/* eslint-disable react/require-default-props */
 import React, { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { Form } from '@unform/web';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
@@ -93,3 +95,16 @@ export default function Update({ content, setOpen, reload }) {
     </S.Container>
   );
 }
+
+Update.propTypes = {
+  content: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    email: PropTypes.string,
+    avatar: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+  setOpen: PropTypes.func,
+  reload: PropTypes.func,
+};

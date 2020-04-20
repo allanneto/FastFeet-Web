@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import history from '~/services/history';
 
@@ -12,3 +13,8 @@ export default function Button({ route }) {
     </S.AddButton>
   );
 }
+
+Button.propTypes = {
+  // eslint-disable-next-line react/require-default-props
+  route: PropTypes.string,
+};

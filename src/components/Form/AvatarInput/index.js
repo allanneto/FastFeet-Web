@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import * as S from './styles';
 
@@ -30,3 +31,8 @@ export default function AvatarInput({ setAvatar }) {
     </S.Container>
   );
 }
+
+AvatarInput.propTypes = {
+  // eslint-disable-next-line react/require-default-props
+  setAvatar: PropTypes.func,
+};

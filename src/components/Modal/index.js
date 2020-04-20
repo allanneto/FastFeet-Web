@@ -1,4 +1,6 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import * as S from './styles';
 
@@ -18,3 +20,9 @@ export default function Modal({ children, open, setOpen }) {
     )
   );
 }
+
+Modal.propTypes = {
+  open: PropTypes.func,
+  setOpen: PropTypes.func,
+  children: PropTypes.element,
+};
